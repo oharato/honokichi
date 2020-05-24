@@ -13,7 +13,7 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li
-                      {{ if eq .URL  "/" }}
+                      {{ if eq .Params.url  "/" }}
                       class="active"
                       {{ end }}
                       ><a href="/">Top</a></li>
@@ -26,7 +26,7 @@
                       {{ end }}
 
                       {{ else }}
-                      {{ $url := substr .URL 0 6}}
+                      {{ $url := substr .Params.url 0 6}}
                       {{ if eq $url "/blog/"}}
                       class="active"
                       {{ end }}
@@ -34,7 +34,7 @@
 
                       ><a href="/blog/">Blog</a></li>
                     <li
-                      {{ $url := substr .URL 0 6}}
+                      {{ $url := substr .Params.url 0 6}}
 
                       {{ if eq $url "/tags/"}}
                       class="active"
@@ -42,14 +42,14 @@
                       ><a href="/tags/">Tags</a></li>
 
                     <li
-                      {{ $url := substr .URL 0 7}}
+                      {{ $url := substr .Params.url 0 7}}
 
                       {{ if eq $url "/pages/"}}
                       class="active"
                       {{ end }}
                       ><a href="/pages/">Pages</a></li>
                 </ul>
-                <p class="navbar-text navbar-right"><a class="navbar-link" href="{{ .RSSLink}}">rss</a></p>
+                <p class="navbar-text navbar-right"><a class="navbar-link" href="/index.xml">rss</a></p>
 
                 {{ if or .Site.Params.social.github }}
                 <p class="navbar-text navbar-right"><a class="navbar-link" href="https://github.com/{{.Site.Params.social.github}}">github</a></p>
